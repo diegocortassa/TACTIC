@@ -970,6 +970,7 @@ class TableLayoutWdg(BaseTableLayoutWdg):
                     if (size.y > 0) {
                         //bvr.src_el.setStyle("height", size.y - 71);
                         bvr.src_el.setStyle("height", size.y - 90);
+                    }
                 }
                 '''
             })
