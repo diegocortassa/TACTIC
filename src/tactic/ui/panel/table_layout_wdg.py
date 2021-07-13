@@ -961,7 +961,7 @@ class TableLayoutWdg(BaseTableLayoutWdg):
                 'cbjs_action': '''
                 // var parent = bvr.src_el.getParent(".spt_layout_top");
                 var parent = bvr.src_el.getParent(".spt_tab_content_top");
-                var is_hidden_row = bvr.src_el.getParent("");
+                var is_hidden_row = bvr.src_el.getParent("spt_hidden_content");
                 // parent = spt_layout spt_table spt_layout_inner SPT_SMENU_CONTAINER SPT_BVR
                 // parent.parent = spt_panel spt_sobject_top spt_layout_top spt_table_top
                 if (parent && !is_hidden_row) {
