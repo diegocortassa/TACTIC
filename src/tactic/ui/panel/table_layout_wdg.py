@@ -942,8 +942,6 @@ class TableLayoutWdg(BaseTableLayoutWdg):
         else:
             sticky_header = True
 
-        #inner.add_style("width: 100%")
-
         if sticky_header:
 
             h_scroll = DivWdg()
@@ -963,9 +961,11 @@ class TableLayoutWdg(BaseTableLayoutWdg):
                 'cbjs_action': '''
                 // var parent = bvr.src_el.getParent(".spt_layout_top");
                 var parent = bvr.src_el.getParent(".spt_tab_content_top");
+                var is_hidden_row = bvr.src_el.getParent("");
                 // parent = spt_layout spt_table spt_layout_inner SPT_SMENU_CONTAINER SPT_BVR
                 // parent.parent = spt_panel spt_sobject_top spt_layout_top spt_table_top
-                if (parent) {
+                if (parent && !is_hidden_row) {
+                    console.log("Setting height");
                     var size = parent.getSize();
                     if (size.y > 0) {
                         //bvr.src_el.setStyle("height", size.y - 71);
@@ -1044,31 +1044,6 @@ class TableLayoutWdg(BaseTableLayoutWdg):
             scroll.add_style("overflow-x: auto")
             scroll.add_style("position: relative")
 
-            # Moo scrollbar
-            """
-            scroll.add_style("overflow-y: hidden")
-            scroll.add_behavior( {
-                'type': 'load',
-                'cbjs_action': '''
-                new Scrollable(bvr.src_el, null);
-                '''
-            } )
-            """
-
-
-
-            """
-            if not height and self.kwargs.get("__hidden__") not in [True, 'True', 'true']:
-                # set to browser height
-                scroll.add_behavior( {
-                    'type': 'load',
-                    'cbjs_action': '''
-                    var y = window.getSize().y;
-                    bvr.src_el.setStyle('height', y);
-                    '''
-                    } )
-            """
-
 
             table = self.table
             table.add_class("spt_table_table")
@@ -1112,9 +1087,9 @@ class TableLayoutWdg(BaseTableLayoutWdg):
 
 
         # TEST TEST TEST
-        from .mobile_wdg import MobileTableWdg
-        mobile_wdg = MobileTableWdg(table_id=self.table_id)
-        inner.add(mobile_wdg)
+        #from .mobile_wdg import MobileTableWdg
+        #mobile_wdg = MobileTableWdg(table_id=self.table_id)
+        #inner.add(mobile_wdg)
 
 
         # generate dictionary of subscribed search_keys to affect context menu
