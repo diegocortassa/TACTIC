@@ -960,21 +960,15 @@ class TableLayoutWdg(BaseTableLayoutWdg):
                 'type': 'load',
                 'cbjs_action': '''
 
-                //var parent = bvr.src_el.getParent(".spt_layout_top");
-                //parent = spt_layout spt_table spt_layout_inner SPT_SMENU_CONTAINER SPT_BVR
-                //parent.parent = spt_panel spt_sobject_top spt_layout_top spt_table_top
-
                 var parent = bvr.src_el.getParent(".spt_tab_content_top");
                 var is_hidden_row = bvr.src_el.getParent(".spt_hidden_content");
 
                 if (parent && !is_hidden_row) {
-                    console.log("Setting height");
-                    bvr.src_el.setStyle("height", "calc(100vh - 168px)");
-                    //var size = parent.getSize();
-                    //if (size.y > 0) {
-                        //bvr.src_el.setStyle("height", size.y - 71);
-                        //bvr.src_el.setStyle("height", size.y - 90);
-                   //}
+                    var offsets = bvr.src_el.getBoundingClientRect();
+                    var top = offsets.top + 41;
+                    bvr.src_el.setStyle("height", "calc(100vh - " + top + "px)");
+                    //bvr.src_el.setStyle("width", "calc(100vw - 20px)");
+                    //bvr.src_el.setStyle("height", "calc(100vh - 168px)");
                 }
                 '''
             })
